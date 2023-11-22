@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://wfabjsirgl22"]
+
+[ext_resource type="Texture2D" uid="uid://c408fdehi477a" path="res://Assets/mystic_woods/sprites/characters/player.png" id="1_1rhxr"]
+[ext_resource type="Script" path="res://Characters/player.gd" id="1_142st"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ba0g"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="Animation" id="Animation_nlgyk"]
+resource_name = "walk_right"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 4, 4]
+}
+
+[sub_resource type="Animation" id="Animation_qb8d1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_frdhh"]
+_data = {
+"RESET": SubResource("Animation_qb8d1"),
+"walk_right": SubResource("Animation_nlgyk")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_142st")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1rhxr")
+hframes = 6
+vframes = 10
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_5ba0g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_frdhh")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
