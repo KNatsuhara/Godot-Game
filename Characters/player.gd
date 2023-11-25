@@ -8,10 +8,10 @@ var input_direction : Vector2 = Vector2.ZERO
 func _ready():
 	animation_tree.active = true
 	
-func _process(delta):
+func _process(_delta):
 	update_animation_parameters()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Get input direction
 	input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
