@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://crvtvw8vfre5n"]
+
+[ext_resource type="StyleBox" uid="uid://dfam5pb1c7tin" path="res://Assets/general_panel.tres" id="1_r5l40"]
+
+[resource]
+GridContainer/constants/h_separation = 4
+GridContainer/constants/v_separation = 4
+Panel/styles/panel = ExtResource("1_r5l40")
+TabContainer/font_sizes/font_size = 15
+TabContainer/styles/panel = ExtResource("1_r5l40")

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var move_speed : float = 80
 @onready var animation_tree : AnimationTree = $AnimationTree
+@onready var inventory_menu : CanvasLayer = $inventory_menu
 
 var input_direction : Vector2 = Vector2.ZERO
 
@@ -23,6 +24,10 @@ func _physics_process(delta):
 	
 	# Move and slide function uses velocity of character body to move character around
 	move_and_slide()
+	
+	# Add menu state machine here
+	if Input.is_action_just_pressed("inventory_button"):
+		inventory_menu.visible = !inventory_menu.visible
 
 func update_animation_parameters():
 	if(velocity == Vector2.ZERO):

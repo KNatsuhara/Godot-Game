@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://5pw2br2k8kwm"]
+
+[ext_resource type="Texture2D" uid="uid://bti8mru1tpo0e" path="res://icon.svg" id="1_gof06"]
+
+[node name="material_slot" type="HBoxContainer"]
+offset_right = 311.0
+offset_bottom = 50.0
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_gof06")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Material Name"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "x10"
