@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://d4lvj8dcsb36i"]
+[gd_scene load_steps=21 format=3 uid="uid://d4lvj8dcsb36i"]
 
 [ext_resource type="Texture2D" uid="uid://c17ulnm1s5a2t" path="res://Assets/mystic_woods/sprites/characters/slime.png" id="1_0yf3x"]
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_iqjiu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjaqk"]
 atlas = ExtResource("1_0yf3x")
@@ -81,7 +82,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7g7v2")
 }],
 "loop": true,
-"name": &"death",
+"name": &"slime_death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -126,18 +127,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t34bh"]
-radius = 88.3629
+radius = 62.0081
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_prsvj"]
 radius = 5.0
 height = 12.0
 
 [node name="enemy" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_iqjiu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y2j2x")
 animation = &"slime_idle"
-frame_progress = 0.13096
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -150,3 +152,6 @@ shape = SubResource("CircleShape2D_t34bh")
 position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_prsvj")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
